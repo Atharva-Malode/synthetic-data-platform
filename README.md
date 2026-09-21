@@ -198,3 +198,24 @@ The initial relationship is one-to-many: one user can own many activity events. 
 - xUnit and Testcontainers
 - OpenTelemetry and Swagger/OpenAPI
 
+## Repository Documents
+
+- [Synthetic Data Platform Specification](SYNTHETIC_DATA_PLATFORM_SPEC.md): phased architecture, requirements, labs, APIs, risks, and definition of success.
+- [AI Data Modeling Considerations](AI_DATA_MODELING_CONSIDERATIONS.md): agent responsibilities, clarification workflow, safe expression rules, estimation, MCP tools, and privacy boundaries.
+
+## Phased Delivery
+
+1. Repository baseline and health endpoint
+2. Deterministic generator and file exports
+3. PostgreSQL persistence and constraints
+4. Kafka publishing, consumers, replay, retries, and idempotency
+5. Redis-backed orchestration
+6. Agent-assisted planning and MCP tools
+7. Local Docker and Kubernetes deployment
+8. AWS deployment with managed PostgreSQL, Kafka, Redis, and object storage
+
+The project should only claim hands-on experience for phases that have actually been implemented, tested, and documented.
+
+## Safety and Data Boundaries
+
+All generated data must be clearly synthetic. Identifiers are generated from scratch, secrets are never placed in output, and source rows are not copied directly. The agent plans and explains; the typed application validates and executes. No agent workflow should have unrestricted shell access, arbitrary SQL access, or permission to bypass confirmation and hard scale limits.
